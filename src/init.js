@@ -27,7 +27,36 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
+
+  var calculateDistance = function(dancer0, dancer1) {
+    return Math.sqrt(Math.pow(dancer0.top - dancer1.top, 2) + Math.pow(dancer0.left - dancer1.left, 2));
+  };
+
+  $('.pairUpButton').on('click', function(event) {
+    let dancers = window.dancers;
+    while (dancers.length > 1) {
+      let dancer1 = dancers.shift();
+      let closestID = 0;
+      let closestDist = calculateDistance(dancer1, dancers[0]);
+      for (let i = 1; i < dancers.length; i++) {
+        let dist = calculateDistance(dancer1, dancers[i]);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestID = i;
+        }
+      }
+
+    }
+    if (dancers.length === 1) {
+      dancers[0].addClass('sad');
+    }
+  });
+
+
+  // $('body').on({mouseenter: function() { $(this).addClass('animate__bounce'); }, mouseleave: function() { $(this).removeClass('animate__bounce'); }}, '.dancer');
+
 });
 
