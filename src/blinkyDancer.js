@@ -11,8 +11,9 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.oldStep = Dancer.prototype.step;
 
-  // this.$node.addClass('animate__heartBeat');
-  // this.$node.addClass('animate__infinite');
+  this.$node.addClass('animate__flash');
+  this.$node.addClass('animate__infinite');
+
 
   //console.log(this.oldStep);
 };
@@ -23,7 +24,7 @@ BlinkyDancer.prototype.constructor = BlinkyDancer;
 BlinkyDancer.prototype.step = function() {
   this.oldStep();
 
-  this.$node.toggle();
+  // this.$node.toggle();
 };
 //setTimeout(this.step, this.timeBetweenSteps);
 // we plan to overwrite the step function below, but we still want the superclass step behavior to work,

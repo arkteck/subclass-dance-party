@@ -6,34 +6,123 @@ body{
   background-image: url('/assets/DancefloorBG.jpeg');
   background-size: 100% 100%;
   font-size: 18px;
+  overflow: hidden;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: white;
+  text-decoration: none;
+  font-family: 'Comfortaa', cursive;
 }
-.title, .addDancerButton{
+.addDancerButton{
   padding:5px 12px;
   float:right;
 }
-.topbar{
-  height:32px;
-  background-color: #555;
-}
+
 .title{
-  background-color: #777;
+  width: 30%;
+  margin: 5px auto;
+  left: 5%;
+  position: relative;
+  font-family: 'Comfortaa', cursive;
+  color: #c18bf5;
 }
+
+.button{
+  position:relative;
+  bottom: 40px;
+  white-space: normal;
+  word-wrap: break-all;
+  text-shadow: 2px 2px 4px #000;
+  text-align: center;
+  width: 5%;
+  border-radius: 10%;
+  margin: 1%;
+  padding: 4px;
+  background: rgb(193,139,245);
+  background: linear-gradient(145deg, rgba(193,139,245,1) 0%, rgba(253,29,29,1) 73%, rgba(252,176,69,1) 100%);
+}
+
+.button:hover{
+  background: rgb(193,139,245);
+  background: linear-gradient(325deg, rgba(193,139,245,1) 0%, rgba(253,29,29,1) 73%, rgba(252,176,69,1) 100%);
+}
+
+.buttonDown{
+  transform: translate(3px, 3px);
+}
+
+.danceButton{
+  padding:5px 12px;
+  float:left;
+}
+
+.topbar{
+  height:20%;
+  background-color: black;
+}
+
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  border-radius:50%;
   position:absolute;
+  box-shadow: 2px 2px 4px #000;
 }
 
 .dancer:hover{
-  border:10px solid green;
-  border-radius:10px;
+  background-color: green;
+  border-radius:50%;
 }
 
-.sad {
-  width: auto;
-  height: auto;
-  z-index: 2;
+.animate__flash:hover {
+  transform: scale(2, 2);
+}
+
+.animate__shakeX{
+  background-color: purple;
+}
+
+.animate__shakeX:hover{
+  background-color: pink;
+  border-radius: 20%;
+}
+
+.animate__rubberBand{
+  background-color: #04C4D9;
+}
+
+.animate__rubberBand:hover{
+  height: 60px;
+  background: rgb(193,139,245);
+  background: radial-gradient(circle, rgba(193,139,245,1) 0%, rgba(99,148,217,1) 20%, rgba(106,225,80,1) 45%, rgba(252,176,69,1) 71%, rgba(253,29,29,1) 94%);
+}
+
+.sad{
+  width: 40px;
+  height: 40px;
+  background-image: url('/assets/sadFace.png');
+  background-size: 100% 100%;
+}
+
+.angry{
+  width: 40px;
+  height: 40px;
+  background-image: url('/assets/angryFace.png');
+  background-size: 100% 100%;
+}
+
+.lights{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: none;
+}
+
+.animate__backOutRight{
+  --animate-duration: 5s;
+}
+
+.animate__backOutLeft{
+  --animate-duration: 5s;
 }
