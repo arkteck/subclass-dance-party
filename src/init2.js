@@ -1,5 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
+  let timeoutIDs = [];
 
   const moveDancers = function(dancer, originTop, originLeft, destTop, destLeft, i, n) {
     if (i <= n) {
@@ -112,7 +113,6 @@ $(document).ready(function() {
       }, 3000);
     }
 
-    $('.lights').removeClass('lightsOut');
     $('.lights:hidden').fadeIn('slow');
 
   });
@@ -200,5 +200,37 @@ $(document).ready(function() {
   //     stats.document.close();
   //   }, 500);
   // }();
-});
 
+  $('.conga').on('click', function(event) {
+    $('.lights').removeClass('lightsOut');
+    $('.lights').fadeOut(200, 'swing');
+    let centerTop = $('body').height() * .5;
+    let centerLeft = $('body').width() * .5;
+    let radius = Math.min($('body').height(), $('body').width()) * .4;
+
+    let dancers = window.dancers.slice();
+    for (let t = 0; t < dancers.length; t++) {
+      let x = centerLeft + radius * Math.cos(t * 2 * Math.PI / 60);
+      let y = centerTop + radius * Math.sin(t * 2 * Math.PI / 60);
+      let dancertop0 = dancers[t].top;
+      let dancerleft0 = dancers[t].left;
+      moveDancers(dancers[t], dancertop0, dancerleft0, y, x, 1, 80);
+      setTimeout(function() { congaDance(dancers[t], t, 60); }, 1500);
+    }
+
+  });
+  $('.stopConga').on('click', function(event) {
+    timeoutIDs.forEach(i => clearTimeout(i));
+
+  });
+  const congaDance = function(dancer, t, n) {
+    t++;
+    let centerTop = $('body').height() * .5;
+    let centerLeft = $('body').width() * .5;
+    let radius = Math.min($('body').height(), $('body').width()) * .4;
+    let x = centerLeft + radius * Math.cos(t * 2 * Math.PI / 60);
+    let y = centerTop + radius * Math.sin(t * 2 * Math.PI / 60);
+    moveDancers(dancer, dancer.top, dancer.left, y, x, 1, 10);
+    timeoutIDs.push(setTimeout(function() { congaDance(dancer, t, n); }, 100));
+  };
+});
